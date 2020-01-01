@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Link } from '../components/Link';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,20 +18,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const Alternate: FunctionComponent = () => (
+const Alternate: FC = () => (
   <View style={styles.container}>
     <Text accessibilityRole="header" style={styles.text}>
       Alternate Page
     </Text>
 
-    <Text
-      style={styles.link}
-      accessibilityRole="link"
-      // @ts-ignore
-      href={`/`}
-    >
+    <Link style={styles.link} href={`/`}>
       Go Back
-    </Text>
+    </Link>
   </View>
 );
 

@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Link } from '../components/Link';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,21 +22,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Index: FunctionComponent = () => {
+const Index: FC = () => {
   return (
     <View style={styles.container}>
       <Text accessibilityRole="header" style={styles.text}>
         React Native for Web & Next.js
       </Text>
 
-      <Text
-        style={styles.link}
-        accessibilityRole="link"
-        // @ts-ignore
-        href={`/alternate`}
-      >
+      <Link style={styles.link} href={`/alternate`}>
         A universal link
-      </Text>
+      </Link>
 
       <View style={styles.textContainer}>
         <Text accessibilityRole="header" aria-level="2" style={styles.text}>
