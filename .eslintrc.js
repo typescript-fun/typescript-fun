@@ -17,8 +17,9 @@ module.exports = {
     },
   },
   rules: {
-    // Not necessarry.
+    // Unnecessary.
     'react/prop-types': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
     // Buggy.
     '@typescript-eslint/explicit-function-return-type': 'off',
     // Any as placeholder is OK.
