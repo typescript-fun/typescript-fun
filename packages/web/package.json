@@ -2,6 +2,9 @@
   "name": "web",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
