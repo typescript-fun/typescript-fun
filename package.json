@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "deps": "rimraf 'yarn.lock' 'node_modules' '**/node_modules' && yarn",
+    "TODO:dev": "yarn workspace web dev",
+    "TODO:prod": "yarn workspace web build && yarn workspace web start",
+    "TODO:lint": "eslint '**/*.{ts,tsx}'",
+    "TODO:tsc": "tsc",
+    "TODO:jest": "cross-env JEST_WATCH=true jest --watch --runInBand --notify",
+    "TODO:jest-ci": "jest --runInBand",
+    "TODO:test": "yarn lint && yarn tsc && yarn jest-ci"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.0"
+  }
+}
