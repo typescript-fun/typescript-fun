@@ -8,6 +8,12 @@ export const Page: FC<{ title: string }> = ({ title, children }) => {
   const theme = useTheme();
   return (
     <>
+      <style jsx global>{`
+        body {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      `}</style>
       <Head>
         <title>{title}</title>
       </Head>
