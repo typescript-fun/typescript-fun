@@ -3,6 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Page } from '../components/Page';
 import { useTheme } from '../hooks/useTheme';
+import { Link } from '../components/Link';
 
 const Index: NextPage = () => {
   const theme = useTheme();
@@ -21,6 +22,9 @@ const Index: NextPage = () => {
         five-minutes-demo for you. A form with browser and server validation.
         Until we write a blog post, explore the well-commented code.
       </Text>
+      <Link href="https://github.com/typescript-fun/five-minutes-demo">
+        test
+      </Link>
     </Page>
   );
 };

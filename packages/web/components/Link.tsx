@@ -1,8 +1,11 @@
-import NextLink, { LinkProps } from 'next/link';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import React, { FC } from 'react';
-import { Text, TextProps } from 'react-native';
+import { Platform, Text, TextProps } from 'react-native';
+import { ExternalUrl, Url } from '../types';
 
-export const Link: FC<LinkProps & TextProps> = props => {
+type LinkProps = NextLinkProps & TextProps & { href: Url };
+
+export const Link: FC<LinkProps> = props => {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     as,
@@ -15,6 +18,18 @@ export const Link: FC<LinkProps & TextProps> = props => {
     shallow,
     ...textProps
   } = props;
+
+  if (ExternalUrl.is(href))
+    return (
+      <Text
+        {...textProps}
+        accessibilityRole="link"
+        // web-only properties.
+        {...Platform.select({
+          web: { href, target: '_blank' },
+        })}
+      />
+    );
 
   return (
     <NextLink
