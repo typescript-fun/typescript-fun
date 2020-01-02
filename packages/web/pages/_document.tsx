@@ -1,4 +1,9 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, {
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import config from '../app.json';
@@ -13,9 +18,9 @@ const normalizeNextElements = `
 `;
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }: any) {
+  static async getInitialProps({ renderPage }: DocumentContext) {
     AppRegistry.registerComponent(config.name, () => Main);
-    // @ts-ignore
+    // @ts-ignore React Native Web custom API.
     const { getStyleElement } = AppRegistry.getApplication(config.name);
     const page = renderPage();
     const styles = [
