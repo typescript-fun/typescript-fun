@@ -4,9 +4,6 @@ import { StyleSheet } from 'react-native';
 // Just find and replace what has to be changed. It's type-safe.
 // For example, `16` or `padding: 16`.
 
-// MozOsxFontSmoothing?: string,
-// WebkitFontSmoothing?: string
-
 export const theme = StyleSheet.create({
   container: {
     marginHorizontal: 'auto',
