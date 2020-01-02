@@ -40,4 +40,12 @@ export const theme = StyleSheet.create({
     lineHeight: 25,
     marginBottom: 16,
   },
+  paragraph: {
+    color: 'rgb(26, 32, 44)',
+    fontFamily:
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 16,
+  },
 });
