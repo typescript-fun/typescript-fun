@@ -5,6 +5,11 @@ import { StyleSheet } from 'react-native';
 // For example, `16` or `padding: 16`. Why don't names? Because naming is hard.
 
 export const theme = StyleSheet.create({
+  rootScrollView: {
+    flex: 1,
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+  },
   container: {
     marginHorizontal: 'auto',
     maxWidth: 740,
