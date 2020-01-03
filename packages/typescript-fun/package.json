@@ -2,18 +2,24 @@
   "name": "typescript-fun",
   "version": "0.0.1",
   "description": "Utilities for typed functional programming in TypeScript",
-  "main": "./dist/index.js",
-  "module": "./esm/index.js",
-  "react-native": "./esm/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es6/index.js",
+  "types": "./dist/types/src/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist/**",
-    "esm/**"
+    "dist/**"
   ],
   "repository": "typescript-fun/typescript-fun",
   "homepage": "https://typescript.fun",
   "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:es6": "tsc -p tsconfig.es6.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build": "yarn clean && yarn build:cjs && yarn build:es6 && yarn build:types",
+    "prepublish": "yarn build"
+  },
   "peerDependencies": {
     "react": ">=16.8.0"
   }

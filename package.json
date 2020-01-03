@@ -6,7 +6,8 @@
   "scripts": {
     "deps": "rimraf 'yarn.lock' 'node_modules' '**/node_modules' && yarn",
     "dev": "yarn workspace web dev",
-    "prod": "yarn workspace web build && yarn workspace web start",
+    "build": "yarn workspace typescript-fun build && yarn workspace web build",
+    "prod": "yarn build && yarn workspace web start",
     "lint": "eslint '**/*.{ts,tsx}'",
     "tsc": "tsc",
     "test": "yarn lint && yarn tsc"

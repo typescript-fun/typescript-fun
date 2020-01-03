@@ -5,10 +5,10 @@ import { Page } from '../components/Page';
 import { useTheme } from '../hooks/useTheme';
 import { Link } from '../components/Link';
 
-// dev path
-import { Hoverable } from 'typescript-fun/src/components/Hoverable';
-// production path
-// import { Hoverable } from 'typescript-fun';
+// For production:
+import { Hoverable } from 'typescript-fun';
+// For development:
+// import { Hoverable } from 'typescript-fun/src';
 
 const Index: NextPage = () => {
   const theme = useTheme();
@@ -34,6 +34,7 @@ const Index: NextPage = () => {
           </Link>
         )}
       </Hoverable>
+      {/* <Foo /> */}
     </Page>
   );
 };

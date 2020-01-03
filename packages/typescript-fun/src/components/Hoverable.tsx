@@ -1,8 +1,5 @@
 import React, { ReactElement, Component } from 'react';
 
-// Fix hover for touch devices.
-// https://necolas.github.io/react-native-web/docs/?path=/docs/guides-web-recipes--page
-
 let isHoverEnabled = false;
 
 if (typeof window !== 'undefined') {
@@ -50,6 +47,10 @@ interface HoverableState {
   showHover: boolean;
 }
 
+/**
+ * Fix hover for touch devices.
+ * https://necolas.github.io/react-native-web/docs/?path=/docs/guides-web-recipes--page
+ */
 export class Hoverable extends Component<HoverableProps, HoverableState> {
   constructor(props: HoverableProps) {
     super(props);
