@@ -6,9 +6,9 @@ import { useTheme } from '../hooks/useTheme';
 import { Link } from '../components/Link';
 
 // For production:
-import { Hoverable } from 'typescript-fun';
+// import { Hoverable } from 'typescript-fun';
 // For development:
-// import { Hoverable } from 'typescript-fun/src';
+import { Hoverable } from 'typescript-fun/src';
 
 const Index: NextPage = () => {
   const theme = useTheme();

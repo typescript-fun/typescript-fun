@@ -2,8 +2,8 @@
 const withTM = require('next-transpile-modules');
 
 module.exports = withTM({
-  // // For development, `import { Hoverable } from 'typescript-fun/src';`
-  // transpileModules: ['typescript-fun'],
+  // For development, `import { Hoverable } from 'typescript-fun/src';`
+  transpileModules: ['typescript-fun'],
   webpack: config => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
