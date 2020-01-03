@@ -1,8 +1,21 @@
 import { StyleSheet } from 'react-native';
 
-// That's all we need for a "design system". We don't even need constants.
-// Just find and replace what has to be changed. It's type-safe.
-// For example, `16` or `padding: 16`. Why don't names? Because naming is hard.
+const _ = {
+  fontFamily: {
+    base:
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+  },
+  color: {
+    text: 'rgb(26, 32, 44)',
+    link: 'rgb(49, 130, 206)',
+  },
+  spacing: {
+    smaller: 8,
+    base: 16,
+    bigger: 32,
+    // smallest, biggest, superSmall, whatever
+  },
+} as const;
 
 export const theme = StyleSheet.create({
   rootScrollView: {
@@ -13,40 +26,49 @@ export const theme = StyleSheet.create({
   container: {
     marginHorizontal: 'auto',
     maxWidth: 740,
-    padding: 16,
+    padding: _.spacing.base,
   },
   pageHeader: {
     marginBottom: 48,
-    marginTop: 32,
+    marginTop: _.spacing.bigger,
   },
   logo: {
     height: 45,
     width: 300,
   },
   heading1: {
-    color: 'rgb(26, 32, 44)',
-    fontFamily:
-      '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    color: _.color.text,
+    fontFamily: _.fontFamily.base,
     fontSize: 24,
     fontWeight: '700',
     lineHeight: 30,
-    marginBottom: 32,
+    marginBottom: _.spacing.bigger,
   },
   heading2: {
-    color: 'rgb(26, 32, 44)',
-    fontFamily:
-      '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    color: _.color.text,
+    fontFamily: _.fontFamily.base,
     fontSize: 20,
     fontWeight: '700',
     lineHeight: 25,
-    marginBottom: 16,
+    marginBottom: _.spacing.base,
   },
   paragraph: {
-    color: 'rgb(26, 32, 44)',
-    fontFamily:
-      '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    color: _.color.text,
+    fontFamily: _.fontFamily.base,
     fontSize: 16,
     lineHeight: 24,
-    marginBottom: 16,
+    marginBottom: _.spacing.base,
+  },
+  link: {
+    color: _.color.link,
+  },
+  linkHover: {
+    textDecorationLine: 'underline',
+  },
+  icon: {
+    width: _.spacing.base,
+    height: _.spacing.base,
+    marginHorizontal: _.spacing.smaller,
+    top: 2,
   },
 });

@@ -22,9 +22,11 @@ const Index: NextPage = () => {
         five-minutes-demo for you. A form with browser and server validation.
         Until we write a blog post, explore the well-commented code.
       </Text>
-      <Link href="https://github.com/typescript-fun/five-minutes-demo">
-        Example code on GitHub
-      </Link>
+      <Text style={theme.paragraph}>
+        <Link href="https://github.com/typescript-fun/five-minutes-demo">
+          Example code on GitHub
+        </Link>
+      </Text>
     </Page>
   );
 };
