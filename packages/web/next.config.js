@@ -1,4 +1,8 @@
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withTM = require('next-transpile-modules');
+
+module.exports = withTM({
+  transpileModules: ['typescript-fun'],
   webpack: config => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -11,4 +15,4 @@ module.exports = {
     config.resolve.extensions.push('.web.js', '.web.ts', '.web.tsx');
     return config;
   },
-};
+});

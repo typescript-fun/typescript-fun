@@ -1,0 +1,20 @@
+{
+  "name": "typescript-fun",
+  "version": "0.0.1",
+  "description": "Utilities for typed functional programming in TypeScript",
+  "main": "./dist/index.js",
+  "module": "./esm/index.js",
+  "react-native": "./esm/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/**",
+    "esm/**"
+  ],
+  "repository": "typescript-fun/typescript-fun",
+  "homepage": "https://typescript.fun",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}
