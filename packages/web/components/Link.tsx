@@ -5,7 +5,11 @@ import { ExternalUrl, Url } from '../types';
 import { useTheme } from '../hooks/useTheme';
 import { Hoverable } from 'typescript-fun/src';
 
-type LinkProps = NextLinkProps & TextProps & { href: Url };
+type LinkProps = NextLinkProps &
+  TextProps & {
+    href: Url;
+    icon?: boolean;
+  };
 
 const ExternalUrlIcon: FC = () => {
   const theme = useTheme();
@@ -40,6 +44,7 @@ export const Link: FC<LinkProps> = props => {
     scroll,
     shallow,
     children,
+    icon,
     ...textProps
   } = props;
 
@@ -53,10 +58,10 @@ export const Link: FC<LinkProps> = props => {
           {...(isExternal &&
             Platform.select({ web: { href, target: '_blank' } }))}
           accessibilityRole="link"
-          style={[theme.link, hover && theme.linkHover]}
+          style={[theme.link, textProps.style as any, hover && theme.linkHover]}
         >
           {children}
-          {isExternal && <ExternalUrlIcon />}
+          {icon && isExternal && <ExternalUrlIcon />}
         </Text>
       )}
     </Hoverable>

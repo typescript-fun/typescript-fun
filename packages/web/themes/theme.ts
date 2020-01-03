@@ -1,19 +1,21 @@
 import { StyleSheet } from 'react-native';
 
-const _ = {
+const design = {
   fontFamily: {
     base:
       '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
   },
   color: {
     text: 'rgb(26, 32, 44)',
-    link: 'rgb(49, 130, 206)',
+    darkBlue: '#153e75',
+    blue: 'rgb(49, 130, 206)',
+    lightBlue: '#ceedff',
   },
   spacing: {
-    smaller: 8,
+    small: 8,
     base: 16,
-    bigger: 32,
-    // smallest, biggest, superSmall, whatever
+    big: 32,
+    // smaller, smallest, bigger, biggest, whatever
   },
 } as const;
 
@@ -26,49 +28,78 @@ export const theme = StyleSheet.create({
   container: {
     marginHorizontal: 'auto',
     maxWidth: 740,
-    padding: _.spacing.base,
+    width: '100%',
+    padding: design.spacing.base,
   },
   pageHeader: {
     marginBottom: 48,
-    marginTop: _.spacing.bigger,
+    marginTop: design.spacing.big,
+  },
+  pageFooter: {
+    marginTop: design.spacing.big,
   },
   logo: {
     height: 45,
     width: 300,
   },
   heading1: {
-    color: _.color.text,
-    fontFamily: _.fontFamily.base,
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
     fontSize: 24,
     fontWeight: '700',
     lineHeight: 30,
-    marginBottom: _.spacing.bigger,
+    marginBottom: design.spacing.big,
   },
   heading2: {
-    color: _.color.text,
-    fontFamily: _.fontFamily.base,
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
     fontSize: 20,
     fontWeight: '700',
     lineHeight: 25,
-    marginBottom: _.spacing.base,
+    marginTop: design.spacing.big,
+    marginBottom: design.spacing.base,
   },
   paragraph: {
-    color: _.color.text,
-    fontFamily: _.fontFamily.base,
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
     fontSize: 16,
     lineHeight: 24,
-    marginBottom: _.spacing.base,
+    marginBottom: design.spacing.base,
   },
   link: {
-    color: _.color.link,
+    color: design.color.blue,
   },
   linkHover: {
     textDecorationLine: 'underline',
   },
   icon: {
-    width: _.spacing.base,
-    height: _.spacing.base,
-    marginHorizontal: _.spacing.smaller,
+    height: design.spacing.base,
+    marginHorizontal: design.spacing.small,
     top: 2,
+    width: design.spacing.base,
+  },
+  buttonOutline: {
+    borderColor: design.color.blue,
+    borderRadius: 4,
+    borderWidth: 1,
+    fontWeight: '600',
+    paddingHorizontal: design.spacing.base,
+    paddingVertical: design.spacing.small,
+  },
+  tag: {
+    backgroundColor: design.color.lightBlue,
+    color: design.color.darkBlue,
+    fontWeight: '500',
+    padding: design.spacing.small,
+    borderRadius: 64,
+    paddingRight: design.spacing.base,
+    marginRight: design.spacing.small,
+  },
+  tagImage: {
+    width: 24,
+    height: 24,
+    borderRadius: 24,
+    top: 6,
+    marginRight: design.spacing.small,
   },
 });

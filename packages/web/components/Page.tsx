@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { View, ScrollView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
 import { Logo } from './Logo';
+import { Link } from './Link';
 
 export const Page: FC<{ title: string }> = ({ title, children }) => {
   const theme = useTheme();
@@ -18,6 +19,14 @@ export const Page: FC<{ title: string }> = ({ title, children }) => {
         <Logo />
       </View>
       {children}
+      <View style={theme.pageFooter}>
+        <Text style={theme.paragraph}>
+          <Link href="https://twitter.com/estejs">twitter</Link> -{' '}
+          <Link href="https://github.com/typescript-fun/typescript-fun/issues/new">
+            report a bug
+          </Link>
+        </Text>
+      </View>
     </ScrollView>
   );
 };
