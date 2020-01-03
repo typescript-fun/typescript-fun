@@ -1,14 +1,9 @@
 import { NextPage } from 'next';
 import React from 'react';
 import { Text } from 'react-native';
+import { Link } from '../components/Link';
 import { Page } from '../components/Page';
 import { useTheme } from '../hooks/useTheme';
-import { Link } from '../components/Link';
-
-// For production:
-// import { Hoverable } from 'typescript-fun';
-// For development:
-import { Hoverable } from 'typescript-fun/src';
 
 const Index: NextPage = () => {
   const theme = useTheme();
@@ -27,14 +22,9 @@ const Index: NextPage = () => {
         five-minutes-demo for you. A form with browser and server validation.
         Until we write a blog post, explore the well-commented code.
       </Text>
-      <Hoverable>
-        {hover => (
-          <Link href="https://github.com/typescript-fun/five-minutes-demo">
-            {String(hover)}
-          </Link>
-        )}
-      </Hoverable>
-      {/* <Foo /> */}
+      <Link href="https://github.com/typescript-fun/five-minutes-demo">
+        Example code on GitHub
+      </Link>
     </Page>
   );
 };
