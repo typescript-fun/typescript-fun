@@ -4,6 +4,7 @@ import { Text, Image } from 'react-native';
 import { Link } from '../components/Link';
 import { Page } from '../components/Page';
 import { useTheme } from '../hooks/useTheme';
+import { CourseOutline } from '../components/CourseOutline';
 
 const Index: NextPage = () => {
   const theme = useTheme();
@@ -63,28 +64,7 @@ const Index: NextPage = () => {
         hands-on, and you will be able to practice everything you learn.
       </Text>
       <Text style={theme.heading2}>Course Outline</Text>
-      <Text style={theme.paragraph}>
-        1. Basic functional programming: immutability, pure functions, map and
-        reduce.
-      </Text>
-      <Text style={theme.paragraph}>
-        2. Domain modeling made functional with algebraic types.
-      </Text>
-      <Text style={theme.paragraph}>
-        3. How to never use null nor undefined again.
-      </Text>
-      <Text style={theme.paragraph}>
-        4. Basic fp-ts: interfaces, pipe, Eq, Ord, Option, Either.
-      </Text>
-      <Text style={theme.paragraph}>
-        5. How to reliably validate data with io-ts.
-      </Text>
-      <Text style={theme.paragraph}>
-        6. Advanced TypeScript: currying, advanced types, useful tips.
-      </Text>
-      <Text style={theme.paragraph}>
-        7. Advanced fp-ts structures and patterns.
-      </Text>
+      <CourseOutline />
       <Text style={theme.heading2}>Next Dates</Text>
       <Text style={theme.heading2}>Skill Requirements</Text>
       <Text style={theme.paragraph}>1. Basic JavaScript knowledge</Text>
