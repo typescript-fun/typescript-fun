@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { Text, Image } from 'react-native';
+import { Text } from 'react-native';
+import { CourseOutline } from '../components/CourseOutline';
 import { Link } from '../components/Link';
 import { Page } from '../components/Page';
 import { useTheme } from '../hooks/useTheme';
-import { CourseOutline } from '../components/CourseOutline';
 
 const Index: NextPage = () => {
   const theme = useTheme();

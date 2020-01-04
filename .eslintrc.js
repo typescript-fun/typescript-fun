@@ -1,16 +1,20 @@
+// https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
 module.exports = {
+  root: true,
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-  ],
-  plugins: ['react-hooks'],
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: { jsx: true },
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
   },
+  plugins: ['@typescript-eslint', 'react-hooks'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'prettier/@typescript-eslint',
+    'plugin:react/recommended',
+  ],
   settings: {
     react: {
       version: 'detect',

@@ -55,35 +55,31 @@ export class Hoverable extends Component<HoverableProps, HoverableState> {
   constructor(props: HoverableProps) {
     super(props);
     this.state = { isHovered: false, showHover: true };
-    this._handleMouseEnter = this._handleMouseEnter.bind(this);
-    this._handleMouseLeave = this._handleMouseLeave.bind(this);
-    this._handleGrant = this._handleGrant.bind(this);
-    this._handleRelease = this._handleRelease.bind(this);
   }
 
-  _handleMouseEnter() {
+  handleMouseEnter = () => {
     if (isHoverEnabled && !this.state.isHovered) {
       const { onHoverIn } = this.props;
       if (onHoverIn) onHoverIn();
       this.setState(state => ({ ...state, isHovered: true }));
     }
-  }
+  };
 
-  _handleMouseLeave() {
+  handleMouseLeave = () => {
     if (this.state.isHovered) {
       const { onHoverOut } = this.props;
       if (onHoverOut) onHoverOut();
       this.setState(state => ({ ...state, isHovered: false }));
     }
-  }
+  };
 
-  _handleGrant() {
+  handleGrant = () => {
     this.setState(state => ({ ...state, showHover: false }));
-  }
+  };
 
-  _handleRelease() {
+  handleRelease = () => {
     this.setState(state => ({ ...state, showHover: true }));
-  }
+  };
 
   render() {
     const { children } = this.props;
@@ -93,14 +89,14 @@ export class Hoverable extends Component<HoverableProps, HoverableState> {
         : children;
 
     return React.cloneElement(child as any, {
-      onMouseEnter: this._handleMouseEnter,
-      onMouseLeave: this._handleMouseLeave,
+      onMouseEnter: this.handleMouseEnter,
+      onMouseLeave: this.handleMouseLeave,
       // prevent hover showing while responder
-      onResponderGrant: this._handleGrant,
-      onResponderRelease: this._handleRelease,
+      onResponderGrant: this.handleGrant,
+      onResponderRelease: this.handleRelease,
       // if child is Touchable
-      onPressIn: this._handleGrant,
-      onPressOut: this._handleRelease,
+      onPressIn: this.handleGrant,
+      onPressOut: this.handleRelease,
     });
   }
 }
