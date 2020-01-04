@@ -50,24 +50,29 @@ export const Link: FC<LinkProps> = props => {
 
   const isExternal = ExternalUrl.is(href);
 
-  const text = (
-    <Hoverable>
-      {hover => (
-        <Text
-          {...textProps}
-          {...(isExternal &&
-            Platform.select({ web: { href, target: '_blank' } }))}
-          accessibilityRole="link"
-          style={[theme.link, textProps.style as any, hover && theme.linkHover]}
-        >
-          {children}
-          {icon && isExternal && <ExternalUrlIcon />}
-        </Text>
-      )}
-    </Hoverable>
+  const link = (
+    <Text
+      {...textProps}
+      {...(isExternal && Platform.select({ web: { href, target: '_blank' } }))}
+      accessibilityRole="link"
+      style={[theme.link, textProps.style as any]}
+    >
+      <Hoverable>
+        {hover => (
+          // Additional Text is necessary. NextLink injects own props to its first child
+          // which clashes with Hoverable props, because Hoverable has own props.
+          // Why all of this? We want Hoverable, because it fixes hover on touch / mobile
+          // devices. Necolas is already working on the better API.
+          <Text style={hover && theme.linkHover}>
+            {children}
+            {icon && isExternal && <ExternalUrlIcon />}
+          </Text>
+        )}
+      </Hoverable>
+    </Text>
   );
 
-  if (isExternal) return text;
+  if (isExternal) return link;
 
   return (
     <NextLink
@@ -78,7 +83,7 @@ export const Link: FC<LinkProps> = props => {
       scroll={scroll}
       shallow={shallow}
     >
-      {text}
+      {link}
     </NextLink>
   );
 };
