@@ -68,7 +68,7 @@ export const theme = StyleSheet.create({
     marginTop: design.spacing.big,
     marginBottom: design.spacing.base,
   },
-  paragraph: {
+  text: {
     color: design.color.text,
     fontFamily: design.fontFamily.base,
     fontSize: 16,
