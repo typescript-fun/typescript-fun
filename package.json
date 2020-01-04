@@ -10,8 +10,7 @@
     "prod": "yarn build && yarn workspace web start",
     "lint": "eslint '**/*.{ts,tsx}'",
     "tsc": "tsc",
-    "test": "yarn lint && yarn tsc",
-    "prepublish": "yarn workspace typescript-fun build"
+    "test": "yarn lint && yarn tsc"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.14.0",
