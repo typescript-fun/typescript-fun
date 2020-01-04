@@ -1,5 +1,8 @@
 import * as t from 'io-ts';
 
+// Typed routing. For example, we can use ExternalUrl.is for runtime logic.
+// We can also decode complex URL queries to safe types. It's neat.
+
 export const InternalUrl = t.union([
   t.strict({ pathname: t.literal('/cz') }),
   t.strict({ pathname: t.literal('/blog') }),
