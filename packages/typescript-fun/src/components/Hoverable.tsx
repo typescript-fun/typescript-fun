@@ -48,7 +48,7 @@ interface HoverableState {
 }
 
 /**
- * Fix hover for touch devices.
+ * Fix hover for touch devices. React Native Web is required.
  * https://necolas.github.io/react-native-web/docs/?path=/docs/guides-web-recipes--page
  */
 export class Hoverable extends Component<HoverableProps, HoverableState> {

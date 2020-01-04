@@ -2,4 +2,4 @@
 
 Utilities for typed functional programming in TypeScript
 
-test
+Deprecated. Use `ts-fun` instead.
