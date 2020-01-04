@@ -6,10 +6,11 @@ const design = {
       '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
   },
   color: {
-    text: 'rgb(26, 32, 44)',
+    text: '#1A202C',
     darkBlue: '#153e75',
-    blue: 'rgb(49, 130, 206)',
+    blue: '#3182CE',
     lightBlue: '#ceedff',
+    white: '#ffffff',
   },
   spacing: {
     small: 8,
@@ -75,6 +76,20 @@ export const theme = StyleSheet.create({
     lineHeight: 24,
     marginBottom: design.spacing.base,
   },
+  smallText: {
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
+    fontSize: 14,
+    lineHeight: 24,
+    fontWeight: '500',
+  },
+  bigText: {
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: '600',
+  },
   link: {
     color: design.color.blue,
   },
@@ -86,6 +101,14 @@ export const theme = StyleSheet.create({
     marginHorizontal: design.spacing.small,
     top: 2,
     width: design.spacing.base,
+  },
+  button: {
+    backgroundColor: design.color.blue,
+    color: design.color.white,
+    borderRadius: 4,
+    fontWeight: '600',
+    paddingHorizontal: design.spacing.base,
+    paddingVertical: design.spacing.small,
   },
   buttonOutline: {
     borderColor: design.color.blue,

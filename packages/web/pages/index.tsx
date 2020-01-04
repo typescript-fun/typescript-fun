@@ -67,6 +67,18 @@ const Index: NextPage = () => {
       <CourseOutline />
       <Text style={theme.heading2}>Next Dates</Text>
 
+      <Text style={theme.smallText}>Berlin</Text>
+      <Text style={theme.bigText}>399 EUR</Text>
+      <Text style={[theme.text, theme.smallText]}>February – March 2020</Text>
+      <Text style={theme.text}>
+        <Link
+          style={theme.button}
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfBXCXIQIXUKF2FyM7Vrpywj-aRjZc_QBXM5Pg5AQSIcAJ7Uw/viewform"
+        >
+          Register
+        </Link>
+      </Text>
+
       <Text style={theme.heading2}>Skill Requirements</Text>
       <Text style={theme.text}>1. Basic JavaScript knowledge</Text>
       <Text style={theme.text}>

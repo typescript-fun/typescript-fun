@@ -21,6 +21,7 @@ export const ExternalUrl = t.keyof({
   'https://twitter.com/robinpokorny': null,
   'https://twitter.com/estejs': null,
   'mailto:daniel@steigerwald.cz': null,
+  'https://docs.google.com/forms/d/e/1FAIpQLSfBXCXIQIXUKF2FyM7Vrpywj-aRjZc_QBXM5Pg5AQSIcAJ7Uw/viewform': null,
 });
 export type ExternalUrl = t.TypeOf<typeof ExternalUrl>;
 
