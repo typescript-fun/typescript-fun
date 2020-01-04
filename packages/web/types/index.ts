@@ -1,6 +1,7 @@
 import * as t from 'io-ts';
 
 export const InternalUrl = t.union([
+  t.strict({ pathname: t.literal('/cz') }),
   t.strict({ pathname: t.literal('/blog') }),
   t.strict({ pathname: t.literal('/blog'), query: t.strict({ id: t.string }) }),
 ]);

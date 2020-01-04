@@ -94,6 +94,10 @@ const Index: NextPage = () => {
           Robin Pokorny
         </Link>
       </Text>
+      <Text style={theme.heading3}>
+        Are you looking for the{' '}
+        <Link href={{ pathname: '/cz' }}>Czech Training</Link>?
+      </Text>
     </Page>
   );
 };

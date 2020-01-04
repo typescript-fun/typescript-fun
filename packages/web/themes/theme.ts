@@ -59,6 +59,15 @@ export const theme = StyleSheet.create({
     marginTop: design.spacing.big,
     marginBottom: design.spacing.base,
   },
+  heading3: {
+    color: design.color.text,
+    fontFamily: design.fontFamily.base,
+    fontSize: 16,
+    fontWeight: '700',
+    lineHeight: 24,
+    marginTop: design.spacing.big,
+    marginBottom: design.spacing.base,
+  },
   paragraph: {
     color: design.color.text,
     fontFamily: design.fontFamily.base,
