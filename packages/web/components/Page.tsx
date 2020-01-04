@@ -23,7 +23,7 @@ export const Page: FC<{ title: string }> = ({ title, children }) => {
         <Text style={theme.text}>
           <Link href="https://twitter.com/estejs">twitter</Link> -{' '}
           <Link href="https://github.com/typescript-fun/typescript-fun/issues/new">
-            report a bugg
+            report a bug
           </Link>
         </Text>
       </View>
