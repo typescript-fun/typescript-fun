@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Platform, Text, TextProps, View } from 'react-native';
 import { ExternalUrl, Url } from '../types';
 import { useTheme } from '../hooks/useTheme';
-import { Hoverable } from 'typescript-fun';
+import { Hoverable } from './Hoverable';
 
 type LinkProps = NextLinkProps &
   TextProps & {
