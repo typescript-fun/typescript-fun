@@ -21,6 +21,8 @@
     "prepublish": "yarn build"
   },
   "peerDependencies": {
+    "fp-ts": "^2.3.1",
+    "io-ts": "^2.0.3",
     "react": ">=16.8.0"
   }
 }
