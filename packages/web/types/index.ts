@@ -4,8 +4,9 @@ import * as t from 'io-ts';
 // We can also decode complex URL queries to safe types. It's neat.
 
 export const InternalUrl = t.union([
-  t.strict({ pathname: t.literal('/cz') }),
-  t.strict({ pathname: t.literal('/blog') }),
+  t.literal('/'),
+  t.literal('/cz'),
+  t.literal('/blog'),
   t.strict({ pathname: t.literal('/blog'), query: t.strict({ id: t.string }) }),
 ]);
 export type InternalUrl = t.TypeOf<typeof InternalUrl>;
