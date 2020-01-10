@@ -16,19 +16,19 @@ import {
   useRef,
 } from 'react';
 
-export type BrandedMaybeOptionalTypeName<T> = T extends t.Brand<infer B>
+type FormError<T> = T extends t.Brand<infer B>
   ? keyof B
   : T extends O.Option<t.Brand<infer C>>
   ? keyof C
   : never;
 
-export type FormErrors<P extends t.Props> = Partial<
+type FormErrors<P extends t.Props> = Partial<
   {
-    [K in keyof P]: BrandedMaybeOptionalTypeName<t.TypeOf<P[K]>>[];
+    [K in keyof P]: FormError<t.TypeOf<P[K]>>[];
   }
 >;
 
-export const errorsToFormErrors = <P extends t.Props>(
+const tErrorsToFormErrors = <P extends t.Props>(
   errors: t.Errors,
 ): FormErrors<P> =>
   errors.reduce(
@@ -85,7 +85,10 @@ interface State<P extends t.Props> {
 type Focusable = { focus: () => void };
 type FocusablesRef<P extends t.Props> = Partial<{ [K in keyof P]: Focusable }>;
 
-export interface Field<T, E extends string> {
+/**
+ * Form field with generic output type and error.
+ */
+export interface FormField<T, E extends string> {
   errors: E[];
   firstError: O.Option<E>;
   isInvalid: boolean;
@@ -98,36 +101,51 @@ export interface Field<T, E extends string> {
   value: T;
 }
 
-export type OptionalField<T, E extends string> = Field<O.Option<T>, E>;
+/**
+ * Optional form field with generic output type and error.
+ */
+export type OptionalFormField<T, E extends string> = FormField<O.Option<T>, E>;
 
-export type FieldMaybeOptional<T, E extends string> =
-  | Field<T, E>
-  | OptionalField<T, E>;
+/**
+ * Form field maybe optional with generic output type and error.
+ */
+export type FormFieldMaybeOptional<T, E extends string> =
+  | FormField<T, E>
+  | OptionalFormField<T, E>;
 
-export const isOptionalField = <T, E extends string>(
-  field: FieldMaybeOptional<T, E>,
-): field is OptionalField<T, E> =>
+/**
+ * A helper for `FormFieldMaybeOptional` type.
+ *
+ * @example
+ * if (isOptionalField(field)) {
+ *   field.onChange(value.length === 0 ? O.none : O.some(value));
+ * } else {
+ *   field.onChange(value);
+ * }
+ */
+export const isOptionalFormField = <T, E extends string>(
+  field: FormFieldMaybeOptional<T, E>,
+): field is OptionalFormField<T, E> =>
   typeof field.value === 'object' &&
   (O.isSome(field.value as O.Some<T>) || O.isNone(field.value as O.None));
 
-export type Fields<P extends t.Props> = {
-  [K in keyof P]: Field<
-    t.OutputOf<P[K]>,
-    BrandedMaybeOptionalTypeName<t.TypeOf<P[K]>>
-  >;
+type FormFields<P extends t.Props> = {
+  [K in keyof P]: FormField<t.OutputOf<P[K]>, FormError<t.TypeOf<P[K]>>>;
 };
 
 /**
- * ```ts
+ * A form instance returned from `useForm` React Hook or passed to `handleSubmit` config.
+ * It provides a lot of imperative methods and current state.
+ *
+ * @example
  * const handleSubmit = (form: Form<typeof LoginForm['props']>) => {}
- * ```
  */
 export interface Form<P extends t.Props> {
   asyncErrors: FormErrors<P>;
   currentState: t.OutputOfProps<P>;
   disable: () => void;
   enable: () => void;
-  fields: Fields<P>;
+  fields: FormFields<P>;
   isDisabled: boolean;
   isSubmitted: boolean;
   reset: () => void;
@@ -136,17 +154,17 @@ export interface Form<P extends t.Props> {
   validated: Validated<P>;
 }
 
-export interface Config<P extends t.Props> {
-  handleSubmit: (form: Form<P>) => void;
-}
-
 /**
- * React Hook for forms.
+ * React Hook for typed forms with many useful helpers.
  */
 export const useForm = <P extends t.Props>(
   type: t.TypeC<P>,
   initialState: t.OutputOfProps<P>,
-  { handleSubmit }: Config<P> = { handleSubmit: constVoid },
+  {
+    handleSubmit,
+  }: {
+    handleSubmit: (form: Form<P>) => void;
+  } = { handleSubmit: constVoid },
 ): Form<P> => {
   const formRef = useRef<Form<P>>();
   const focusablesRef = useRef<FocusablesRef<P>>({});
@@ -154,7 +172,7 @@ export const useForm = <P extends t.Props>(
   const validate = (state: t.OutputOfProps<P>): Validated<P> =>
     pipe(
       type.decode(state),
-      E.mapLeft(errors => errorsToFormErrors<P>(errors)),
+      E.mapLeft(errors => tErrorsToFormErrors<P>(errors)),
     );
 
   const init = (): State<P> => ({
@@ -244,9 +262,7 @@ export const useForm = <P extends t.Props>(
   );
 
   const getFieldErrors = useCallback(
-    <K extends keyof P>(
-      key: K,
-    ): O.Option<BrandedMaybeOptionalTypeName<t.TypeOf<P[K]>>[]> =>
+    <K extends keyof P>(key: K): O.Option<FormError<t.TypeOf<P[K]>>[]> =>
       pipe(
         O.fromEither(E.swap(validated)),
         O.chain(formErrors => R.lookup(key as string, formErrors)),
@@ -256,9 +272,7 @@ export const useForm = <P extends t.Props>(
   );
 
   const getFieldAsyncErrors = useCallback(
-    <K extends keyof P>(
-      key: K,
-    ): O.Option<BrandedMaybeOptionalTypeName<t.TypeOf<P[K]>>[]> =>
+    <K extends keyof P>(key: K): O.Option<FormError<t.TypeOf<P[K]>>[]> =>
       pipe(R.lookup(key as string, asyncErrors), O.chain(O.fromNullable)),
     [asyncErrors],
   );
@@ -266,10 +280,7 @@ export const useForm = <P extends t.Props>(
   const createField = useCallback(
     <K extends keyof P>(
       key: K,
-    ): Field<
-      t.OutputOf<P[K]>,
-      BrandedMaybeOptionalTypeName<t.TypeOf<P[K]>>
-    > => {
+    ): FormField<t.OutputOf<P[K]>, FormError<t.TypeOf<P[K]>>> => {
       const errors =
         isSubmitted === false
           ? []
@@ -305,11 +316,11 @@ export const useForm = <P extends t.Props>(
 
   // Any state change will recreate fields, but that's fine, React is fast enough.
   // Sure we can optimize it via refs, but I don't think it's necessary.
-  const fields = useMemo<Fields<P>>(
+  const fields = useMemo<FormFields<P>>(
     () =>
       Object.keys(type.props).reduce(
         (acc, key) => ({ ...acc, [key]: createField(key) }),
-        {} as Fields<P>,
+        {} as FormFields<P>,
       ),
     [createField, type.props],
   );
