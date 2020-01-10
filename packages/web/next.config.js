@@ -3,7 +3,7 @@ const withTM = require('next-transpile-modules');
 
 module.exports = withTM({
   // For lib development, use transpileModules. It's faster than tsc --watch.
-  // Remember to import from `src`: `import { Hoverable } from 'typescript-fun/src'`
+  // Remember to import from `typescript-fun/src`.
   // transpileModules: ['typescript-fun'],
   webpack: config => {
     config.resolve.alias = {
