@@ -6,13 +6,15 @@ import * as t from 'io-ts';
 export const InternalUrl = t.union([
   t.literal('/'),
   t.literal('/cz'),
+  t.literal('/examples'),
+  t.literal('/examples/signup'),
   t.literal('/blog'),
   t.strict({ pathname: t.literal('/blog'), query: t.strict({ id: t.string }) }),
 ]);
 export type InternalUrl = t.TypeOf<typeof InternalUrl>;
 
 export const ExternalUrl = t.keyof({
-  'https://github.com/typescript-fun/five-minutes-demo': null,
+  'https://five-minutes-demo.now.sh': null,
   'https://github.com/typescript-fun/typescript-fun': null,
   'https://github.com/typescript-fun/typescript-fun/issues/new': null,
   'https://www.youtube.com/watch?v=PLFl95c-IiU': null,

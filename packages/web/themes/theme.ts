@@ -134,4 +134,7 @@ export const theme = StyleSheet.create({
     top: 6,
     marginRight: design.spacing.small,
   },
+  bigMarginBottom: {
+    marginBottom: design.spacing.big,
+  },
 });

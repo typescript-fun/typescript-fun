@@ -19,17 +19,13 @@ const Index: NextPage = () => {
         reasons.
       </Text>
       <Text style={theme.text}>
-        But instead of a long and tedious explanation of why we created a
-        five-minutes-demo for you. A form with browser and server validation.
-        Until we write a blog post, explore the well-commented code.
+        But instead of a long and tedious explanation of why we created some
+        real-world examples for you. Until we write a blog, explore the
+        well-commented code.
       </Text>
       <Text style={theme.text}>
-        <Link
-          style={theme.buttonOutline}
-          href="https://github.com/typescript-fun/five-minutes-demo"
-          icon
-        >
-          Example code on GitHub
+        <Link style={theme.buttonOutline} href="/examples" icon>
+          Examples
         </Link>
       </Text>
       <Text style={theme.heading2}>Quick Introduction</Text>
