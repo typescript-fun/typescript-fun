@@ -16,7 +16,9 @@ export const Page: FC<{ title: string }> = ({ title, children }) => {
         <title>{title}</title>
       </Head>
       <View style={theme.pageHeader}>
-        <Logo />
+        <Link href="/" style={theme.logo}>
+          <Logo />
+        </Link>
       </View>
       {children}
       <View style={theme.pageFooter}>
