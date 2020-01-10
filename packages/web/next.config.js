@@ -2,9 +2,9 @@
 const withTM = require('next-transpile-modules');
 
 module.exports = withTM({
-  // For a monorepo with Now, transpileModules and importing from /src is the must.
-  // Otherwise CircleCI and ZEIT Now fails with:
-  // Module not found: Can't resolve 'typescript-fun'
+  // For Yarn workspace, transpileModules and importing from /src is the must.
+  // Otherwise CircleCI and ZEIT Now: Module not found: Can't resolve 'typescript-fun'
+  // That's probably because of how Yarn resolves dependencies per workspaces.
   transpileModules: ['typescript-fun'],
   webpack: config => {
     config.resolve.alias = {
