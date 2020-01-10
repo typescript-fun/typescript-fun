@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "engines": {
     "node": "12.x"
@@ -17,7 +17,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-native-web": "^0.12.0-rc.1",
-    "typescript-fun": "0.0.6"
+    "typescript-fun": "0.0.7"
   },
   "devDependencies": {
     "@types/node": "^13.1.2",
