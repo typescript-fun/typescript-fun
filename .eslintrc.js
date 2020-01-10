@@ -14,6 +14,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier/@typescript-eslint',
     'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   settings: {
     react: {
@@ -33,5 +36,9 @@ module.exports = {
     // This is must.
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
+    // Very usefull for bigger projects.
+    'import/no-cycle': 'error',
+    // Not working with React Native Web
+    'import/no-unresolved': 'off',
   },
 };
