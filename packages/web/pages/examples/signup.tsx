@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Page } from '../../components/Page';
 import { useTheme } from '../../hooks/useTheme';
-import { Password } from 'typescript-fun/src';
+import { Password } from 'typescript-fun';
 
 const Index: NextPage = () => {
   const theme = useTheme();
