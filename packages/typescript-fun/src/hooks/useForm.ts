@@ -16,7 +16,7 @@ import {
   useRef,
 } from 'react';
 
-type FormError<T> = T extends t.Brand<infer B>
+type FormErrorFromBrandedType<T> = T extends t.Brand<infer B>
   ? keyof B
   : T extends O.Option<t.Brand<infer C>>
   ? keyof C
@@ -24,7 +24,7 @@ type FormError<T> = T extends t.Brand<infer B>
 
 type FormErrors<P extends t.Props> = Partial<
   {
-    [K in keyof P]: FormError<t.TypeOf<P[K]>>[];
+    [K in keyof P]: FormErrorFromBrandedType<t.TypeOf<P[K]>>[];
   }
 >;
 
@@ -88,7 +88,7 @@ type FocusablesRef<P extends t.Props> = Partial<{ [K in keyof P]: Focusable }>;
 /**
  * Form field with generic output type and error.
  */
-export interface FormField<T, E extends string> {
+export interface Field<T, E extends string> {
   errors: E[];
   firstError: O.Option<E>;
   isInvalid: boolean;
@@ -104,17 +104,17 @@ export interface FormField<T, E extends string> {
 /**
  * Optional form field with generic output type and error.
  */
-export type OptionalFormField<T, E extends string> = FormField<O.Option<T>, E>;
+export type OptionalField<T, E extends string> = Field<O.Option<T>, E>;
 
 /**
  * Form field maybe optional with generic output type and error.
  */
-export type FormFieldMaybeOptional<T, E extends string> =
-  | FormField<T, E>
-  | OptionalFormField<T, E>;
+export type FieldMaybeOptional<T, E extends string> =
+  | Field<T, E>
+  | OptionalField<T, E>;
 
 /**
- * A helper for `FormFieldMaybeOptional` type.
+ * A helper for `FieldMaybeOptional` type.
  *
  * @example
  * if (isOptionalField(field)) {
@@ -123,14 +123,17 @@ export type FormFieldMaybeOptional<T, E extends string> =
  *   field.onChange(value);
  * }
  */
-export const isOptionalFormField = <T, E extends string>(
-  field: FormFieldMaybeOptional<T, E>,
-): field is OptionalFormField<T, E> =>
+export const isOptionalField = <T, E extends string>(
+  field: FieldMaybeOptional<T, E>,
+): field is OptionalField<T, E> =>
   typeof field.value === 'object' &&
   (O.isSome(field.value as O.Some<T>) || O.isNone(field.value as O.None));
 
-type FormFields<P extends t.Props> = {
-  [K in keyof P]: FormField<t.OutputOf<P[K]>, FormError<t.TypeOf<P[K]>>>;
+type Fields<P extends t.Props> = {
+  [K in keyof P]: Field<
+    t.OutputOf<P[K]>,
+    FormErrorFromBrandedType<t.TypeOf<P[K]>>
+  >;
 };
 
 /**
@@ -145,7 +148,7 @@ export interface Form<P extends t.Props> {
   currentState: t.OutputOfProps<P>;
   disable: () => void;
   enable: () => void;
-  fields: FormFields<P>;
+  fields: Fields<P>;
   isDisabled: boolean;
   isSubmitted: boolean;
   reset: () => void;
@@ -262,7 +265,9 @@ export const useForm = <P extends t.Props>(
   );
 
   const getFieldErrors = useCallback(
-    <K extends keyof P>(key: K): O.Option<FormError<t.TypeOf<P[K]>>[]> =>
+    <K extends keyof P>(
+      key: K,
+    ): O.Option<FormErrorFromBrandedType<t.TypeOf<P[K]>>[]> =>
       pipe(
         O.fromEither(E.swap(validated)),
         O.chain(formErrors => R.lookup(key as string, formErrors)),
@@ -272,7 +277,9 @@ export const useForm = <P extends t.Props>(
   );
 
   const getFieldAsyncErrors = useCallback(
-    <K extends keyof P>(key: K): O.Option<FormError<t.TypeOf<P[K]>>[]> =>
+    <K extends keyof P>(
+      key: K,
+    ): O.Option<FormErrorFromBrandedType<t.TypeOf<P[K]>>[]> =>
       pipe(R.lookup(key as string, asyncErrors), O.chain(O.fromNullable)),
     [asyncErrors],
   );
@@ -280,7 +287,7 @@ export const useForm = <P extends t.Props>(
   const createField = useCallback(
     <K extends keyof P>(
       key: K,
-    ): FormField<t.OutputOf<P[K]>, FormError<t.TypeOf<P[K]>>> => {
+    ): Field<t.OutputOf<P[K]>, FormErrorFromBrandedType<t.TypeOf<P[K]>>> => {
       const errors =
         isSubmitted === false
           ? []
@@ -316,11 +323,11 @@ export const useForm = <P extends t.Props>(
 
   // Any state change will recreate fields, but that's fine, React is fast enough.
   // Sure we can optimize it via refs, but I don't think it's necessary.
-  const fields = useMemo<FormFields<P>>(
+  const fields = useMemo<Fields<P>>(
     () =>
       Object.keys(type.props).reduce(
         (acc, key) => ({ ...acc, [key]: createField(key) }),
-        {} as FormFields<P>,
+        {} as Fields<P>,
       ),
     [createField, type.props],
   );

@@ -24,7 +24,7 @@ const Index: NextPage = () => {
         well-commented code.
       </Text>
       <Text style={theme.text}>
-        <Link style={theme.buttonOutline} href="/examples" icon>
+        <Link style={theme.linkButtonOutline} href="/examples" icon>
           Examples
         </Link>
       </Text>
@@ -68,7 +68,7 @@ const Index: NextPage = () => {
       <Text style={[theme.text, theme.smallText]}>February – March 2020</Text>
       <Text style={theme.text}>
         <Link
-          style={theme.button}
+          style={theme.linkButton}
           href="https://docs.google.com/forms/d/e/1FAIpQLSfBXCXIQIXUKF2FyM7Vrpywj-aRjZc_QBXM5Pg5AQSIcAJ7Uw/viewform"
         >
           Register

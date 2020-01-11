@@ -11,13 +11,13 @@ const Index: NextPage = () => {
     <Page title="Examples - TypeScript.fun">
       <Text style={theme.heading1}>Examples</Text>
       <Text style={[theme.text, theme.bigMarginBottom]}>
-        <Link style={theme.buttonOutline} href="/examples/signup" icon>
+        <Link style={theme.linkButtonOutline} href="/examples/signup" icon>
           Sign up form created with React Native Web
         </Link>
       </Text>
       <Text style={theme.text}>
         <Link
-          style={theme.buttonOutline}
+          style={theme.linkButtonOutline}
           href="https://five-minutes-demo.now.sh"
           icon
         >
