@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const design = {
   fontFamily: {
@@ -194,11 +194,15 @@ export const theme = StyleSheet.create({
     position: 'relative',
     top: -design.spacing.small,
   },
-  checkbox: {
+  checkBox: {
     alignSelf: 'center',
     color: design.color.blue,
   },
-  checkboxLabel: {
+  checkBoxFocus: {
+    borderRadius: 2,
+    boxShadow: `0 0 0 2px ${design.color.blue}`,
+  },
+  checkBoxLabel: {
     color: design.color.text,
     fontFamily: design.fontFamily.base,
     fontSize: 16,
@@ -211,10 +215,17 @@ export const theme = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: design.spacing.small,
     alignItems: 'center',
+    ...Platform.select({
+      web: { outlineWidth: 0 },
+    }),
   },
   buttonFocus: {
-    borderColor: design.color.green,
-    boxShadow: `0 0 0 1px ${design.color.green}`,
+    ...Platform.select({
+      web: { boxShadow: `0 0 0 2px ${design.color.blue}` },
+    }),
+  },
+  buttonDisabled: {
+    backgroundColor: design.color.lightGray,
   },
   buttonText: {
     color: design.color.white,

@@ -238,7 +238,7 @@ export const useForm = <P extends t.Props>(
   }, []);
 
   const submit = useCallback(() => {
-    if (!formRef.current) return;
+    if (!formRef.current || formRef.current.isDisabled) return;
     dispatch({ type: 'submit' });
     pipe(validated, E.fold(focusFirstInvalidField, constVoid));
     handleSubmit(formRef.current);
