@@ -24,6 +24,7 @@
   "peerDependencies": {
     "fp-ts": "^2.3.1",
     "io-ts": "^2.0.3",
+    "io-ts-types": "^0.5.5",
     "react": ">=16.8.0"
   },
   "dependencies": {

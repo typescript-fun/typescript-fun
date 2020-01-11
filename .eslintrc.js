@@ -36,7 +36,7 @@ module.exports = {
     // This is must.
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    // Very usefull for bigger projects.
+    // Usefull for bigger projects.
     'import/no-cycle': 'error',
     // Not working with React Native Web
     'import/no-unresolved': 'off',
