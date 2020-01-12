@@ -35,9 +35,18 @@ export const theme = StyleSheet.create({
     padding: design.spacing.base,
     width: '100%',
   },
+  containerCodesandbox: {
+    paddingTop: design.spacing.base,
+    flex: 1,
+  },
   pageHeader: {
     marginBottom: 48,
     marginTop: design.spacing.big,
+  },
+  pageHeaderCodesandbox: {
+    marginBottom: 48,
+    marginTop: design.spacing.big,
+    alignItems: 'center',
   },
   pageFooter: {
     marginTop: design.spacing.big,

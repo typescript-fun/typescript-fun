@@ -1,5 +1,5 @@
 {
-  "name": "signup-react-native-web",
+  "name": "signup-form-react-native-web",
   "scripts": {
     "dev": "next",
     "build": "next build",

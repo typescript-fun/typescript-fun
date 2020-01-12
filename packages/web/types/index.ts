@@ -7,7 +7,7 @@ export const InternalUrl = t.union([
   t.literal('/'),
   t.literal('/cz'),
   t.literal('/examples'),
-  t.literal('/examples/signup'),
+  t.literal('/examples/signup-form-react-native-web'),
   t.literal('/blog'),
   t.strict({ pathname: t.literal('/blog'), query: t.strict({ id: t.string }) }),
 ]);
