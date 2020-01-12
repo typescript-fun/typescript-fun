@@ -53,6 +53,7 @@ const Index: NextPage = () => {
               if (data.email === 'a@a.com') {
                 form.setAsyncErrors({ email: ['ExistingEmail'] });
               } else {
+                alert(JSON.stringify(data, null, 2));
                 form.reset();
               }
             }, 1000);
