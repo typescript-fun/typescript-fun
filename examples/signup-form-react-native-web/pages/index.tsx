@@ -9,7 +9,7 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import {
   Email,
-  ExistingEmail,
+  UniqueEmail,
   Password,
   Phone,
   String64,
@@ -22,8 +22,8 @@ import { useTheme } from '../hooks/useTheme';
 
 const SignUpForm = t.type({
   company: String64,
-  // Because of ExistingEmail, we can set async error 'ExistingEmail'.
-  email: t.union([Email, ExistingEmail]),
+  // Because of UniqueEmail, we can set async error 'UniqueEmail'.
+  email: t.union([Email, UniqueEmail]),
   password: Password,
   phone: option(Phone),
   sendNewsletter: t.boolean,
@@ -51,7 +51,7 @@ const Index: NextPage = () => {
             setTimeout(() => {
               form.enable();
               if (data.email === 'a@a.com') {
-                form.setAsyncErrors({ email: ['ExistingEmail'] });
+                form.setAsyncErrors({ email: ['UniqueEmail'] });
               } else {
                 alert(JSON.stringify(data, null, 2));
                 form.reset();

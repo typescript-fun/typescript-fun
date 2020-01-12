@@ -108,28 +108,27 @@ export type String512 = t.TypeOf<typeof String512>;
 export const Email = t.intersection([String64, EmailString]);
 export type Email = t.TypeOf<typeof Email>;
 
-interface ExistingEmailBrand {
-  readonly ExistingEmail: unique symbol;
+interface UniqueEmailBrand {
+  readonly UniqueEmail: unique symbol;
 }
 /**
- * Existing Email. It's validated as Email, but the decision what is Email and what is
- * ExistingEmail is up to the application itself.
+ * Unique Email.
  *
  * @example
- * // we can assign ExistingEmail to Email
- * const a = '' as ExistingEmail
+ * // We can assign UniqueEmail to Email:
+ * const a = '' as UniqueEmail
  * const b: Email = a
- * // we can not assign Email to ExistingEmail
+ * // But we can not assign Email to UniqueEmail:
  * const a = '' as Email
- * const b: ExistingEmail // error
+ * const b: UniqueEmail = a // error
  */
-export const ExistingEmail = t.brand(
+export const UniqueEmail = t.brand(
   Email,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (s): s is t.Branded<Email, ExistingEmailBrand> => true,
-  'ExistingEmail',
+  (s): s is t.Branded<Email, UniqueEmailBrand> => true,
+  'UniqueEmail',
 );
-export type ExistingEmail = t.TypeOf<typeof ExistingEmail>;
+export type UniqueEmail = t.TypeOf<typeof UniqueEmail>;
 
 /**
  * Non empty trimmed string with max length 512 and min length 6.
@@ -137,19 +136,19 @@ export type ExistingEmail = t.TypeOf<typeof ExistingEmail>;
 export const Password = t.intersection([String512, Min6String]);
 export type Password = t.TypeOf<typeof Password>;
 
-interface WrongPasswordBrand {
-  readonly WrongPassword: unique symbol;
+interface VerifiedPasswordBrand {
+  readonly VerifiedPassword: unique symbol;
 }
 /**
- * Wrong Email. The same pattern as with Email and ExistingEmail.
+ * Verified Password.
  */
-export const WrongPassword = t.brand(
+export const VerifiedPassword = t.brand(
   Password,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (s): s is t.Branded<Password, WrongPasswordBrand> => true,
-  'WrongPassword',
+  (s): s is t.Branded<Password, VerifiedPasswordBrand> => true,
+  'VerifiedPassword',
 );
-export type WrongPassword = t.TypeOf<typeof WrongPassword>;
+export type VerifiedPassword = t.TypeOf<typeof VerifiedPassword>;
 
 /**
  * Non empty trimmed phone string validated by validator.js.

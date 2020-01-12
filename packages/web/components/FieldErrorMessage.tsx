@@ -8,7 +8,7 @@ import { useTheme } from '../hooks/useTheme';
 // TypeScript compiler ensures all errors are translated.
 const fieldErrorMessages = {
   EmailString: 'This is not valid email.',
-  ExistingEmail: 'This email already exists.',
+  UniqueEmail: 'This email already exists.',
   Max512String: 'Too long. Max 512 chars.',
   Max64String: 'Too long. Max 64 chars.',
   Min6String: 'Too short. Min 6 chars.',
