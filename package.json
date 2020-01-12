@@ -9,8 +9,7 @@
     "build": "yarn workspace typescript-fun build && yarn workspace web build",
     "prod": "yarn build && yarn workspace web start",
     "lint": "eslint '**/*.{ts,tsx}'",
-    "tsc": "tsc",
-    "test": "yarn lint && yarn tsc",
+    "test": "yarn lint && yarn build",
     "release": "yarn test && yarn workspace typescript-fun publish"
   },
   "devDependencies": {
