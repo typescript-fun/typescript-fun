@@ -1,7 +1,6 @@
 import React from 'react';
-import Head from 'next/head';
 import NextLink from 'next/link';
-import { Box, Text, Link, Button } from '@chakra-ui/core';
+import { Box, Text, Link } from '@chakra-ui/core';
 
 const Index = () => {
   return (

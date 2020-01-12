@@ -27,6 +27,7 @@ module.exports = {
     // Unnecessary.
     'react/prop-types': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    'import/no-named-as-default': 'off',
     // Buggy.
     '@typescript-eslint/explicit-function-return-type': 'off',
     // Any as placeholder is OK.

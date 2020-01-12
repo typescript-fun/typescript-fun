@@ -22,7 +22,7 @@ const validateEmailSuspended: ValidateOf<Mutation> = input =>
 
 const validateEmailExists: ValidateOf<Mutation> = input =>
   input.email === 'a@a.com'
-    ? TE.left({ email: ['ExistingEmail'] })
+    ? TE.left({ email: ['UniqueEmail'] })
     : TE.right(input);
 
 const createUser: ActionOf<Mutation, User> = input =>

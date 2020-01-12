@@ -4,7 +4,6 @@ import { pipe } from 'fp-ts/lib/pipeable';
 import * as T from 'fp-ts/lib/Task';
 import * as TE from 'fp-ts/lib/TaskEither';
 import * as t from 'io-ts';
-import { TypeOf } from 'io-ts';
 import { createMutationEndpoint } from '../../models/api';
 import { createNanoID } from '../../models/nanoid';
 import {
@@ -17,7 +16,7 @@ import {
 } from '../../types';
 
 const mutation = Schema.props.mutation.props.login;
-type Mutation = TypeOf<typeof mutation>;
+type Mutation = t.TypeOf<typeof mutation>;
 
 const validateEmailSuspended: ValidateOf<Mutation> = input =>
   input.email === 'b@b.com'
@@ -40,10 +39,11 @@ const db: t.OutputOf<typeof DBUser>[] = [
 const loadUser: ActionOf<Mutation, User> = input =>
   T.delay(500)(
     pipe(
-      db.find(u => u.email === input.email && u.password === input.password),
-      User.decode,
+      User.decode(
+        db.find(u => u.email === input.email && u.password === input.password),
+      ),
       TE.fromEither,
-      TE.mapLeft(() => ({ password: ['WrongPassword'] })),
+      TE.mapLeft(() => ({ password: ['VerifiedPassword'] })),
     ),
   );
 
