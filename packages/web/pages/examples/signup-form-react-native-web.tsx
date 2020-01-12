@@ -15,7 +15,6 @@ const Index: NextPage = () => {
       <View style={{ flex: 1 }}>
         <iframe
           src="https://codesandbox.io/embed/github/typescript-fun/typescript-fun/tree/master/examples/signup-form-react-native-web?fontsize=14&hidenavigation=1&module=%2Fpages%2Findex.tsx"
-          // style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
           style={{
             border: 0,
             overflow: 'hidden',
