@@ -6455,13 +6455,6 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript-fun@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/typescript-fun/-/typescript-fun-0.0.7.tgz#34680493aa9f255ef96a59f7d64f84da2a556574"
-  integrity sha512-WdD+ED901/GG72SFg05gBZ36C27TyE0JM675ypUtAgaHJjlbqiJZqMSwDB+7TswePXzU1GHN7AdgeLDOwls1Kg==
-  dependencies:
-    validator "^12.1.0"
-
 typescript@^3.7.4:
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.4.tgz#1743a5ec5fef6a1fa9f3e4708e33c81c73876c19"
