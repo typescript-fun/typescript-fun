@@ -13,6 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
+    // https://stackoverflow.com/a/53131824/233902
+    // "noErrorTruncation": true
   },
   "exclude": ["node_modules"]
 }
