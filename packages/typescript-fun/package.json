@@ -1,6 +1,6 @@
 {
   "name": "typescript-fun",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Daniel Steigerwald <daniel@steigerwald.cz>",
   "description": "Utilities for typed functional programming in TypeScript",
   "main": "./dist/cjs/index.js",
