@@ -6,13 +6,7 @@ import { Box, Text, Link, Button } from '@chakra-ui/core';
 const Index = () => {
   return (
     <>
-      <Head>
-        <title>Typed Functional Programming in Typescript Example</title>
-      </Head>
       <Box m={8}>
-        <Text fontSize="xl">
-          Typed Functional Programming in Typescript Example
-        </Text>
         <Box maxW="sm" borderWidth="1px" rounded="lg" p={4} my={4}>
           {/* login or sign up. */}
           <Text fontSize="lg">

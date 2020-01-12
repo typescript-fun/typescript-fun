@@ -8,13 +8,13 @@ export const InternalUrl = t.union([
   t.literal('/cz'),
   t.literal('/examples'),
   t.literal('/examples/signup-form-react-native-web'),
+  t.literal('/examples/auth-rest-chakra-ui'),
   t.literal('/blog'),
   t.strict({ pathname: t.literal('/blog'), query: t.strict({ id: t.string }) }),
 ]);
 export type InternalUrl = t.TypeOf<typeof InternalUrl>;
 
 export const ExternalUrl = t.keyof({
-  'https://five-minutes-demo.now.sh': null,
   'https://github.com/typescript-fun/typescript-fun': null,
   'https://github.com/typescript-fun/typescript-fun/issues/new': null,
   'https://www.youtube.com/watch?v=PLFl95c-IiU': null,

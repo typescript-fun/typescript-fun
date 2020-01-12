@@ -22,10 +22,10 @@ const Index: NextPage = () => {
       <Text style={theme.text}>
         <Link
           style={theme.linkButtonOutline}
-          href="https://five-minutes-demo.now.sh"
+          href="/examples/auth-rest-chakra-ui"
           icon
         >
-          Chakra UI login and sign up forms with typed REST API
+          Auth with REST | Chakra UI
         </Link>
       </Text>
     </Page>
