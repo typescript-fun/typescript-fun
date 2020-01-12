@@ -1,0 +1,25 @@
+{
+  "name": "signup-react-native-web",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "fp-ts": "^2.4.0",
+    "io-ts": "^2.0.4",
+    "io-ts-types": "^0.5.5",
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-native-web": "^0.12.0-rc.1",
+    "typescript-fun": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/react": "^16.9.17",
+    "@types/react-native": "^0.60.30",
+    "babel-plugin-react-native-web": "^0.12.0-rc.1",
+    "typescript": "^3.7.4"
+  }
+}
