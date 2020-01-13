@@ -7,8 +7,11 @@
  * Branded types are helpers to build domain types. They have a type suffix,
  * for example `NonEmptyString`. Do not use them directly in the application
  * because they could not be safe. For example, `NonEmptyString` has no max length.
+ *
+ * @since 2.0.0
  */
 import * as t from 'io-ts';
+
 // ES6 version does not work.
 // https://github.com/validatorjs/validator.js/issues/1208
 import isEmail from 'validator/lib/isEmail';
@@ -21,6 +24,10 @@ import isMobilePhone from 'validator/lib/isMobilePhone';
 interface NonEmptyStringBrand {
   readonly NonEmptyString: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const NonEmptyString = t.brand(
   t.string,
   (s): s is t.Branded<string, NonEmptyStringBrand> => s.length > 0,
@@ -30,6 +37,10 @@ export const NonEmptyString = t.brand(
 interface TrimmedStringBrand {
   readonly TrimmedString: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const TrimmedString = t.brand(
   t.string,
   (s): s is t.Branded<string, TrimmedStringBrand> =>
@@ -37,6 +48,9 @@ export const TrimmedString = t.brand(
   'TrimmedString',
 );
 
+/**
+ * @since 2.0.0
+ */
 export const NonEmptyTrimmedString = t.intersection([
   // The order matters. UI can show the first error only.
   NonEmptyString,
@@ -46,6 +60,10 @@ export const NonEmptyTrimmedString = t.intersection([
 interface Max64StringBrand {
   readonly Max64String: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const Max64String = t.brand(
   t.string,
   (s): s is t.Branded<string, Max64StringBrand> => s.length <= 64,
@@ -55,6 +73,10 @@ export const Max64String = t.brand(
 interface Max512StringBrand {
   readonly Max512String: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const Max512String = t.brand(
   t.string,
   (s): s is t.Branded<string, Max512StringBrand> => s.length <= 512,
@@ -64,6 +86,10 @@ export const Max512String = t.brand(
 interface Min6StringBrand {
   readonly Min6String: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const Min6String = t.brand(
   t.string,
   (s): s is t.Branded<string, Min6StringBrand> => s.length >= 6,
@@ -73,6 +99,10 @@ export const Min6String = t.brand(
 interface EmailStringBrand {
   readonly EmailString: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const EmailString = t.brand(
   t.string,
   (s): s is t.Branded<string, EmailStringBrand> => isEmail(s),
@@ -82,6 +112,10 @@ export const EmailString = t.brand(
 interface PhoneStringBrand {
   readonly PhoneString: unique symbol;
 }
+
+/**
+ * @since 2.0.0
+ */
 export const PhoneString = t.brand(
   t.string,
   (s): s is t.Branded<string, PhoneStringBrand> => isMobilePhone(s),
@@ -92,35 +126,56 @@ export const PhoneString = t.brand(
 
 /**
  * Non empty trimmed string with max length 64.
+ *
+ * @since 2.0.0
  */
 export const String64 = t.intersection([NonEmptyTrimmedString, Max64String]);
+
+/**
+ * @since 2.0.0
+ */
 export type String64 = t.TypeOf<typeof String64>;
 
 /**
  * Non empty trimmed string with max length 512.
+ *
+ * @since 2.0.0
  */
 export const String512 = t.intersection([NonEmptyTrimmedString, Max512String]);
+
+/**
+ * @since 2.0.0
+ */
 export type String512 = t.TypeOf<typeof String512>;
 
 /**
  * Non empty trimmed email string with max length 64 validated by validator.js.
+ *
+ * @since 2.0.0
  */
 export const Email = t.intersection([String64, EmailString]);
+
+/**
+ * @since 2.0.0
+ */
 export type Email = t.TypeOf<typeof Email>;
 
 interface UniqueEmailBrand {
   readonly UniqueEmail: unique symbol;
 }
+
 /**
  * Unique Email.
  *
  * @example
- * // We can assign UniqueEmail to Email:
- * const a = '' as UniqueEmail
- * const b: Email = a
- * // But we can not assign Email to UniqueEmail:
- * const a = '' as Email
- * const b: UniqueEmail = a // error
+ * import { Email, UniqueEmail } from 'typescript-fun';
+ * let uniqueEmail = '' as UniqueEmail;
+ * // This is ok. Any UniqueEmail is Email.
+ * const email: Email = uniqueEmail;
+ * // @ts-ignore This is not ok. We can not assign some Email to UniqueEmail.
+ * uniqueEmail = email;
+ *
+ * @since 2.0.0
  */
 export const UniqueEmail = t.brand(
   Email,
@@ -128,19 +183,32 @@ export const UniqueEmail = t.brand(
   (s): s is t.Branded<Email, UniqueEmailBrand> => true,
   'UniqueEmail',
 );
+
+/**
+ * @since 2.0.0
+ */
 export type UniqueEmail = t.TypeOf<typeof UniqueEmail>;
 
 /**
  * Non empty trimmed string with max length 512 and min length 6.
+ *
+ * @since 2.0.0
  */
 export const Password = t.intersection([String512, Min6String]);
+
+/**
+ * @since 2.0.0
+ */
 export type Password = t.TypeOf<typeof Password>;
 
 interface VerifiedPasswordBrand {
   readonly VerifiedPassword: unique symbol;
 }
+
 /**
  * Verified Password.
+ *
+ * @since 2.0.0
  */
 export const VerifiedPassword = t.brand(
   Password,
@@ -148,10 +216,20 @@ export const VerifiedPassword = t.brand(
   (s): s is t.Branded<Password, VerifiedPasswordBrand> => true,
   'VerifiedPassword',
 );
+
+/**
+ * @since 2.0.0
+ */
 export type VerifiedPassword = t.TypeOf<typeof VerifiedPassword>;
 
 /**
  * Non empty trimmed phone string validated by validator.js.
+ *
+ * @since 2.0.0
  */
 export const Phone = t.intersection([NonEmptyTrimmedString, PhoneString]);
+
+/**
+ * @since 2.0.0
+ */
 export type Phone = t.TypeOf<typeof Phone>;

@@ -1,3 +1,8 @@
+/**
+ * The `useForm` is React Hook for typed forms.
+ *
+ * @since 0.2.0
+ */
 import { sequenceS } from 'fp-ts/lib/Apply';
 import * as A from 'fp-ts/lib/Array';
 import * as E from 'fp-ts/lib/Either';
@@ -86,7 +91,7 @@ type Focusable = { focus: () => void };
 type FocusablesRef<P extends t.Props> = Partial<{ [K in keyof P]: Focusable }>;
 
 /**
- * Form field with generic output type and error.
+ * @since 0.2.0
  */
 export interface Field<T, E extends string> {
   errors: E[];
@@ -102,12 +107,12 @@ export interface Field<T, E extends string> {
 }
 
 /**
- * Optional form field with generic output type and error.
+ * @since 0.2.0
  */
 export type OptionalField<T, E extends string> = Field<O.Option<T>, E>;
 
 /**
- * Form field maybe optional with generic output type and error.
+ * @since 0.2.0
  */
 export type FieldMaybeOptional<T, E extends string> =
   | Field<T, E>
@@ -116,12 +121,7 @@ export type FieldMaybeOptional<T, E extends string> =
 /**
  * A helper for `FieldMaybeOptional` type.
  *
- * @example
- * if (isOptionalField(field)) {
- *   field.onChange(value.length === 0 ? O.none : O.some(value));
- * } else {
- *   field.onChange(value);
- * }
+ * @since 0.2.0
  */
 export const isOptionalField = <T, E extends string>(
   field: FieldMaybeOptional<T, E>,
@@ -138,10 +138,9 @@ type Fields<P extends t.Props> = {
 
 /**
  * A form instance returned from `useForm` React Hook or passed to `handleSubmit` config.
- * It provides a lot of imperative methods and current state.
+ * It provides useful imperative methods and current form state.
  *
- * @example
- * const handleSubmit = (form: Form<typeof LoginForm['props']>) => {}
+ * @since 0.2.0
  */
 export interface Form<P extends t.Props> {
   asyncErrors: FormErrors<P>;
@@ -158,7 +157,9 @@ export interface Form<P extends t.Props> {
 }
 
 /**
- * React Hook for typed forms with many useful helpers.
+ * React Hook for typed forms.
+ *
+ * @since 0.2.0
  */
 export const useForm = <P extends t.Props>(
   type: t.TypeC<P>,

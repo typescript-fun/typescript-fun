@@ -19,7 +19,8 @@
     "build:es6": "tsc -p tsconfig.es6.json",
     "build:types": "tsc -p tsconfig.types.json",
     "build": "yarn clean && yarn build:cjs && yarn build:es6 && yarn build:types",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "docs": "docs-ts"
   },
   "peerDependencies": {
     "fp-ts": "^2.3.1",
@@ -31,6 +32,7 @@
     "validator": "^12.1.0"
   },
   "devDependencies": {
-    "@types/validator": "^12.0.1"
+    "@types/validator": "^12.0.1",
+    "docs-ts": "^0.3.0"
   }
 }
