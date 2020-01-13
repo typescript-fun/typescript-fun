@@ -20,7 +20,7 @@
     "build:types": "tsc -p tsconfig.types.json",
     "build": "yarn clean && yarn build:cjs && yarn build:es6 && yarn build:types",
     "prepublish": "yarn build",
-    "docs": "docs-ts"
+    "docs": "docs-ts && mv docs ../../docs"
   },
   "peerDependencies": {
     "fp-ts": "^2.3.1",
