@@ -48,7 +48,6 @@ const errorsToFormErrors = <P extends t.Props>(
                   A.lookup(1, context),
                   O.map(({ key }) => key),
                 ),
-                // tohle musi testovat branded respektive refinement!
                 error: pipe(
                   A.last(context),
                   O.map(entry => entry.type),
