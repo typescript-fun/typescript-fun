@@ -27,6 +27,7 @@ Added in v2.0.0
 - [String512 (type alias)](#string512-type-alias)
 - [String64 (type alias)](#string64-type-alias)
 - [UniqueEmail (type alias)](#uniqueemail-type-alias)
+- [Url (type alias)](#url-type-alias)
 - [VerifiedPassword (type alias)](#verifiedpassword-type-alias)
 - [Email (constant)](#email-constant)
 - [EmailString (constant)](#emailstring-constant)
@@ -42,6 +43,8 @@ Added in v2.0.0
 - [String64 (constant)](#string64-constant)
 - [TrimmedString (constant)](#trimmedstring-constant)
 - [UniqueEmail (constant)](#uniqueemail-constant)
+- [Url (constant)](#url-constant)
+- [UrlString (constant)](#urlstring-constant)
 - [VerifiedPassword (constant)](#verifiedpassword-constant)
 
 ---
@@ -106,6 +109,16 @@ export type UniqueEmail = t.TypeOf<typeof UniqueEmail>
 
 Added in v2.0.0
 
+# Url (type alias)
+
+**Signature**
+
+```ts
+export type Url = t.TypeOf<typeof Url>
+```
+
+Added in v2.0.0
+
 # VerifiedPassword (type alias)
 
 **Signature**
@@ -118,7 +131,7 @@ Added in v2.0.0
 
 # Email (constant)
 
-Non empty trimmed email string with max length 64 validated by validator.js.
+Non empty trimmed email string with max length 64.
 
 **Signature**
 
@@ -202,7 +215,7 @@ Added in v2.0.0
 
 # Phone (constant)
 
-Non empty trimmed phone string validated by validator.js.
+Non empty trimmed phone string.
 
 **Signature**
 
@@ -275,6 +288,28 @@ let uniqueEmail = '' as UniqueEmail
 const email: Email = uniqueEmail
 // @ts-ignore This is not ok. We can not assign some Email to UniqueEmail.
 uniqueEmail = email
+```
+
+Added in v2.0.0
+
+# Url (constant)
+
+Non empty trimmed URL string.
+
+**Signature**
+
+```ts
+export const Url: t.IntersectionC<[t.IntersectionC<[t.BrandC<t.StringC, NonEmptyStringBrand>, t.BrandC<t.StringC, TrimmedStringBrand>]>, t.BrandC<t.StringC, UrlStringBrand>]> = ...
+```
+
+Added in v2.0.0
+
+# UrlString (constant)
+
+**Signature**
+
+```ts
+export const UrlString: t.BrandC<t.StringC, UrlStringBrand> = ...
 ```
 
 Added in v2.0.0

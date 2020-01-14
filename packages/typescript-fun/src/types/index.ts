@@ -16,6 +16,7 @@ import * as t from 'io-ts';
 // https://github.com/validatorjs/validator.js/issues/1208
 import isEmail from 'validator/lib/isEmail';
 import isMobilePhone from 'validator/lib/isMobilePhone';
+import isURL from 'validator/lib/isURL';
 
 // Branded types.
 // We do not export branded types. They shall be created only via the `decode`
@@ -122,6 +123,19 @@ export const PhoneString = t.brand(
   'PhoneString',
 );
 
+interface UrlStringBrand {
+  readonly UrlString: unique symbol;
+}
+
+/**
+ * @since 2.0.0
+ */
+export const UrlString = t.brand(
+  t.string,
+  (s): s is t.Branded<string, UrlStringBrand> => isURL(s),
+  'UrlString',
+);
+
 // Domain types.
 
 /**
@@ -149,7 +163,7 @@ export const String512 = t.intersection([NonEmptyTrimmedString, Max512String]);
 export type String512 = t.TypeOf<typeof String512>;
 
 /**
- * Non empty trimmed email string with max length 64 validated by validator.js.
+ * Non empty trimmed email string with max length 64.
  *
  * @since 2.0.0
  */
@@ -223,7 +237,7 @@ export const VerifiedPassword = t.brand(
 export type VerifiedPassword = t.TypeOf<typeof VerifiedPassword>;
 
 /**
- * Non empty trimmed phone string validated by validator.js.
+ * Non empty trimmed phone string.
  *
  * @since 2.0.0
  */
@@ -233,3 +247,15 @@ export const Phone = t.intersection([NonEmptyTrimmedString, PhoneString]);
  * @since 2.0.0
  */
 export type Phone = t.TypeOf<typeof Phone>;
+
+/**
+ * Non empty trimmed URL string.
+ *
+ * @since 2.0.0
+ */
+export const Url = t.intersection([NonEmptyTrimmedString, UrlString]);
+
+/**
+ * @since 2.0.0
+ */
+export type Url = t.TypeOf<typeof Url>;
