@@ -30,6 +30,8 @@ module.exports = {
     'import/no-named-as-default': 'off',
     // Buggy.
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     // Any as placeholder is OK.
     '@typescript-eslint/no-explicit-any': 'off',
     // No console in production.

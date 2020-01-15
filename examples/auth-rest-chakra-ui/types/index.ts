@@ -107,13 +107,9 @@ export const HttpError = t.type({
 });
 export type HttpError = t.TypeOf<typeof HttpError>;
 
-export type ApiError<P extends t.Props, E extends t.Mixed> = t.UnionC<
-  [typeof HttpError, E]
->;
-export const apiError = <P extends t.Props, E extends t.Mixed>(
-  props: P,
-  error: E,
-): ApiError<P, E> => t.union([HttpError, error]);
+export type ApiError<E extends t.Mixed> = t.UnionC<[typeof HttpError, E]>;
+export const apiError = <E extends t.Mixed>(error: E): ApiError<E> =>
+  t.union([HttpError, error]);
 
 export type Mutation<
   IP extends t.Props,
@@ -123,8 +119,8 @@ export type Mutation<
   input: t.TypeC<IP>;
   error: E;
   payload: P;
-  apiError: ApiError<IP, E>;
-  output: EitherC<ApiError<IP, E>, P>;
+  apiError: ApiError<E>;
+  output: EitherC<ApiError<E>, P>;
 }>;
 export const mutation = <
   IP extends t.Props,
@@ -135,7 +131,7 @@ export const mutation = <
   error: E,
   payload: P,
 ): Mutation<IP, E, P> => {
-  const ApiError = apiError(input.props, error);
+  const ApiError = apiError(error);
   return t.type({
     input,
     error,

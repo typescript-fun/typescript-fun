@@ -193,8 +193,7 @@ interface UniqueEmailBrand {
  */
 export const UniqueEmail = t.brand(
   Email,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (s): s is t.Branded<Email, UniqueEmailBrand> => true,
+  (_s): _s is t.Branded<Email, UniqueEmailBrand> => true,
   'UniqueEmail',
 );
 
@@ -226,8 +225,7 @@ interface VerifiedPasswordBrand {
  */
 export const VerifiedPassword = t.brand(
   Password,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (s): s is t.Branded<Password, VerifiedPasswordBrand> => true,
+  (_s): _s is t.Branded<Password, VerifiedPasswordBrand> => true,
   'VerifiedPassword',
 );
 
